@@ -22,13 +22,15 @@ import PanToolIcon from '@material-ui/icons/PanTool';
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import './Navbar.css';
 import Liste from '../Liste/Liste';
+import zIndex from '@material-ui/core/styles/zIndex';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    background: '#393E46'
-
+    background: '#393E46',
+    position:'fixed',
+    zIndex:100,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -106,6 +108,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     width: drawerWidth,
+    
     flexShrink: 0,
   },
   drawerPaper: {
@@ -140,13 +143,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+
+
   return (
     <div className={classes.root}>
       <AppBar classes={{
@@ -157,7 +156,6 @@ export default function Navbar() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
@@ -165,7 +163,7 @@ export default function Navbar() {
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             Oxy-help
-                    </Typography>
+          </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -191,17 +189,13 @@ export default function Navbar() {
         className={classes.drawer}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={true}
         classes={{
           paper: classes.drawerPaper,
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
         </div>
-        <Divider />
         <List>
           {['Offre', 'Demande'].map((text, index) => (
             <ListItem button key={text}>
@@ -210,7 +204,6 @@ export default function Navbar() {
             </ListItem>
           ))}
         </List>
-        <Divider />
         {/* <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem button key={text}>
