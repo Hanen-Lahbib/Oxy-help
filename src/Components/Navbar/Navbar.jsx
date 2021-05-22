@@ -10,20 +10,14 @@ import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PanToolIcon from '@material-ui/icons/PanTool';
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
+import {Link} from 'react-router-dom';
 import './Navbar.css';
-import Liste from '../Liste/Liste';
-import zIndex from '@material-ui/core/styles/zIndex';
-
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -180,9 +174,9 @@ export default function Navbar() {
           <Button variant="contained" classes={{ root: classes.materialBtn }} href="#contained-buttons">
             Créer une annonce
                     </Button>
-          <Button variant="contained" classes={{ root: classes.materialBtn }} href="#contained-buttons">
+          <Button variant="contained" classes={{ root: classes.materialBtn }} href="/login">
             Se Connecter
-                    </Button>
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
